@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D75595C2EFF1D9000FDEE5F /* beadColors.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2D75595B2EFF1D9000FDEE5F /* beadColors.xml */; };
+		2D75595E2EFF219000FDEE5F /* ColorCatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D75595D2EFF219000FDEE5F /* ColorCatalogLoader.swift */; };
+		2D79D7422F032A94000F1F90 /* UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79D7412F032A94000F1F90 /* UTType.swift */; };
+		2D79D7462F0481C4000F1F90 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 2D79D7452F0481C4000F1F90 /* Sounds */; };
+		2D79D7482F0C6770000F1F90 /* PlaybackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79D7472F0C6770000F1F90 /* PlaybackController.swift */; };
+		2D79D74A2F0C6B2B000F1F90 /* BeadReaderIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79D7492F0C6B2B000F1F90 /* BeadReaderIntents.swift */; };
+		2DA040A82EFAE6EB00E5C65C /* BeadReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040A72EFAE6EB00E5C65C /* BeadReaderApp.swift */; };
+		2DA040AA2EFAE6EB00E5C65C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040A92EFAE6EB00E5C65C /* ContentView.swift */; };
+		2DA040AC2EFAE6F400E5C65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA040AB2EFAE6F400E5C65C /* Assets.xcassets */; };
+		2DA040AF2EFAE6F400E5C65C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA040AE2EFAE6F400E5C65C /* Preview Assets.xcassets */; };
+		2DA040B92EFAE6F500E5C65C /* BeadReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040B82EFAE6F500E5C65C /* BeadReaderTests.swift */; };
+		2DA040C32EFAE6F500E5C65C /* BeadReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040C22EFAE6F500E5C65C /* BeadReaderUITests.swift */; };
+		2DA040C52EFAE6F500E5C65C /* BeadReaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040C42EFAE6F500E5C65C /* BeadReaderUITestsLaunchTests.swift */; };
+		2DA040D22EFB020000E5C65C /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D12EFB020000E5C65C /* SettingsModel.swift */; };
+		2DA040D42EFB0D8700E5C65C /* PreviewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D32EFB0D8700E5C65C /* PreviewProviders.swift */; };
+		2DA040D62EFB408C00E5C65C /* BeadModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA040D52EFB408B00E5C65C /* BeadModels.swift */; };
+		2DFDBC3A2F01CFA60063459A /* PatternLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDBC392F01CFA60063459A /* PatternLoader.swift */; };
+		2DFDBC3C2F01F5E40063459A /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDBC3B2F01F5E40063459A /* AudioManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2DA040B52EFAE6F500E5C65C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DA0409C2EFAE6EB00E5C65C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DA040A32EFAE6EB00E5C65C;
+			remoteInfo = BeadReader;
+		};
+		2DA040BF2EFAE6F500E5C65C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DA0409C2EFAE6EB00E5C65C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DA040A32EFAE6EB00E5C65C;
+			remoteInfo = BeadReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D75595B2EFF1D9000FDEE5F /* beadColors.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = beadColors.xml; sourceTree = "<group>"; };
+		2D75595D2EFF219000FDEE5F /* ColorCatalogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCatalogLoader.swift; sourceTree = "<group>"; };
+		2D79D7412F032A94000F1F90 /* UTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTType.swift; sourceTree = "<group>"; };
+		2D79D7432F032BE1000F1F90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D79D7452F0481C4000F1F90 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		2D79D7472F0C6770000F1F90 /* PlaybackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackController.swift; sourceTree = "<group>"; };
+		2D79D7492F0C6B2B000F1F90 /* BeadReaderIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeadReaderIntents.swift; sourceTree = "<group>"; };
+		2DA040A42EFAE6EB00E5C65C /* BeadReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeadReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DA040A72EFAE6EB00E5C65C /* BeadReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeadReaderApp.swift; sourceTree = "<group>"; };
+		2DA040A92EFAE6EB00E5C65C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2DA040AB2EFAE6F400E5C65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2DA040AE2EFAE6F400E5C65C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2DA040B42EFAE6F500E5C65C /* BeadReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeadReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DA040B82EFAE6F500E5C65C /* BeadReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeadReaderTests.swift; sourceTree = "<group>"; };
+		2DA040BE2EFAE6F500E5C65C /* BeadReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeadReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DA040C22EFAE6F500E5C65C /* BeadReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeadReaderUITests.swift; sourceTree = "<group>"; };
+		2DA040C42EFAE6F500E5C65C /* BeadReaderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeadReaderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2DA040D12EFB020000E5C65C /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		2DA040D32EFB0D8700E5C65C /* PreviewProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProviders.swift; sourceTree = "<group>"; };
+		2DA040D52EFB408B00E5C65C /* BeadModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeadModels.swift; sourceTree = "<group>"; };
+		2DFDBC392F01CFA60063459A /* PatternLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternLoader.swift; sourceTree = "<group>"; };
+		2DFDBC3B2F01F5E40063459A /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DA040A12EFAE6EB00E5C65C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DA040B12EFAE6F500E5C65C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DA040BB2EFAE6F500E5C65C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DA0409B2EFAE6EB00E5C65C = {
+			isa = PBXGroup;
+			children = (
+				2DA040A62EFAE6EB00E5C65C /* BeadReader */,
+				2DA040B72EFAE6F500E5C65C /* BeadReaderTests */,
+				2DA040C12EFAE6F500E5C65C /* BeadReaderUITests */,
+				2DA040A52EFAE6EB00E5C65C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DA040A52EFAE6EB00E5C65C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DA040A42EFAE6EB00E5C65C /* BeadReader.app */,
+				2DA040B42EFAE6F500E5C65C /* BeadReaderTests.xctest */,
+				2DA040BE2EFAE6F500E5C65C /* BeadReaderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DA040A62EFAE6EB00E5C65C /* BeadReader */ = {
+			isa = PBXGroup;
+			children = (
+				2D79D7452F0481C4000F1F90 /* Sounds */,
+				2DA040A72EFAE6EB00E5C65C /* BeadReaderApp.swift */,
+				2DA040A92EFAE6EB00E5C65C /* ContentView.swift */,
+				2DA040AB2EFAE6F400E5C65C /* Assets.xcassets */,
+				2DA040AD2EFAE6F400E5C65C /* Preview Content */,
+				2DA040D12EFB020000E5C65C /* SettingsModel.swift */,
+				2DA040D32EFB0D8700E5C65C /* PreviewProviders.swift */,
+				2DA040D52EFB408B00E5C65C /* BeadModels.swift */,
+				2D75595B2EFF1D9000FDEE5F /* beadColors.xml */,
+				2D75595D2EFF219000FDEE5F /* ColorCatalogLoader.swift */,
+				2DFDBC392F01CFA60063459A /* PatternLoader.swift */,
+				2DFDBC3B2F01F5E40063459A /* AudioManager.swift */,
+				2D79D7412F032A94000F1F90 /* UTType.swift */,
+				2D79D7432F032BE1000F1F90 /* Info.plist */,
+				2D79D7472F0C6770000F1F90 /* PlaybackController.swift */,
+				2D79D7492F0C6B2B000F1F90 /* BeadReaderIntents.swift */,
+			);
+			path = BeadReader;
+			sourceTree = "<group>";
+		};
+		2DA040AD2EFAE6F400E5C65C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2DA040AE2EFAE6F400E5C65C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2DA040B72EFAE6F500E5C65C /* BeadReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				2DA040B82EFAE6F500E5C65C /* BeadReaderTests.swift */,
+			);
+			path = BeadReaderTests;
+			sourceTree = "<group>";
+		};
+		2DA040C12EFAE6F500E5C65C /* BeadReaderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2DA040C22EFAE6F500E5C65C /* BeadReaderUITests.swift */,
+				2DA040C42EFAE6F500E5C65C /* BeadReaderUITestsLaunchTests.swift */,
+			);
+			path = BeadReaderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DA040A32EFAE6EB00E5C65C /* BeadReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DA040C82EFAE6F500E5C65C /* Build configuration list for PBXNativeTarget "BeadReader" */;
+			buildPhases = (
+				2DA040A02EFAE6EB00E5C65C /* Sources */,
+				2DA040A12EFAE6EB00E5C65C /* Frameworks */,
+				2DA040A22EFAE6EB00E5C65C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeadReader;
+			productName = BeadReader;
+			productReference = 2DA040A42EFAE6EB00E5C65C /* BeadReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2DA040B32EFAE6F500E5C65C /* BeadReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DA040CB2EFAE6F500E5C65C /* Build configuration list for PBXNativeTarget "BeadReaderTests" */;
+			buildPhases = (
+				2DA040B02EFAE6F500E5C65C /* Sources */,
+				2DA040B12EFAE6F500E5C65C /* Frameworks */,
+				2DA040B22EFAE6F500E5C65C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DA040B62EFAE6F500E5C65C /* PBXTargetDependency */,
+			);
+			name = BeadReaderTests;
+			productName = BeadReaderTests;
+			productReference = 2DA040B42EFAE6F500E5C65C /* BeadReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2DA040BD2EFAE6F500E5C65C /* BeadReaderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DA040CE2EFAE6F500E5C65C /* Build configuration list for PBXNativeTarget "BeadReaderUITests" */;
+			buildPhases = (
+				2DA040BA2EFAE6F500E5C65C /* Sources */,
+				2DA040BB2EFAE6F500E5C65C /* Frameworks */,
+				2DA040BC2EFAE6F500E5C65C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DA040C02EFAE6F500E5C65C /* PBXTargetDependency */,
+			);
+			name = BeadReaderUITests;
+			productName = BeadReaderUITests;
+			productReference = 2DA040BE2EFAE6F500E5C65C /* BeadReaderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DA0409C2EFAE6EB00E5C65C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					2DA040A32EFAE6EB00E5C65C = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					2DA040B32EFAE6F500E5C65C = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 2DA040A32EFAE6EB00E5C65C;
+					};
+					2DA040BD2EFAE6F500E5C65C = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 2DA040A32EFAE6EB00E5C65C;
+					};
+				};
+			};
+			buildConfigurationList = 2DA0409F2EFAE6EB00E5C65C /* Build configuration list for PBXProject "BeadReader" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2DA0409B2EFAE6EB00E5C65C;
+			productRefGroup = 2DA040A52EFAE6EB00E5C65C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DA040A32EFAE6EB00E5C65C /* BeadReader */,
+				2DA040B32EFAE6F500E5C65C /* BeadReaderTests */,
+				2DA040BD2EFAE6F500E5C65C /* BeadReaderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DA040A22EFAE6EB00E5C65C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DA040AF2EFAE6F400E5C65C /* Preview Assets.xcassets in Resources */,
+				2D75595C2EFF1D9000FDEE5F /* beadColors.xml in Resources */,
+				2D79D7462F0481C4000F1F90 /* Sounds in Resources */,
+				2DA040AC2EFAE6F400E5C65C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DA040B22EFAE6F500E5C65C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DA040BC2EFAE6F500E5C65C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DA040A02EFAE6EB00E5C65C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D79D7422F032A94000F1F90 /* UTType.swift in Sources */,
+				2D75595E2EFF219000FDEE5F /* ColorCatalogLoader.swift in Sources */,
+				2DA040D62EFB408C00E5C65C /* BeadModels.swift in Sources */,
+				2DFDBC3C2F01F5E40063459A /* AudioManager.swift in Sources */,
+				2DA040D22EFB020000E5C65C /* SettingsModel.swift in Sources */,
+				2DA040D42EFB0D8700E5C65C /* PreviewProviders.swift in Sources */,
+				2D79D7482F0C6770000F1F90 /* PlaybackController.swift in Sources */,
+				2D79D74A2F0C6B2B000F1F90 /* BeadReaderIntents.swift in Sources */,
+				2DA040AA2EFAE6EB00E5C65C /* ContentView.swift in Sources */,
+				2DFDBC3A2F01CFA60063459A /* PatternLoader.swift in Sources */,
+				2DA040A82EFAE6EB00E5C65C /* BeadReaderApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DA040B02EFAE6F500E5C65C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DA040B92EFAE6F500E5C65C /* BeadReaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DA040BA2EFAE6F500E5C65C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DA040C32EFAE6F500E5C65C /* BeadReaderUITests.swift in Sources */,
+				2DA040C52EFAE6F500E5C65C /* BeadReaderUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DA040B62EFAE6F500E5C65C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DA040A32EFAE6EB00E5C65C /* BeadReader */;
+			targetProxy = 2DA040B52EFAE6F500E5C65C /* PBXContainerItemProxy */;
+		};
+		2DA040C02EFAE6F500E5C65C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DA040A32EFAE6EB00E5C65C /* BeadReader */;
+			targetProxy = 2DA040BF2EFAE6F500E5C65C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2DA040C62EFAE6F500E5C65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2DA040C72EFAE6F500E5C65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2DA040C92EFAE6F500E5C65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BeadReader/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Apricity.BeadReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2DA040CA2EFAE6F500E5C65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BeadReader/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Apricity.BeadReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2DA040CC2EFAE6F500E5C65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Apricity.BeadReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeadReader.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeadReader";
+			};
+			name = Debug;
+		};
+		2DA040CD2EFAE6F500E5C65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Apricity.BeadReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeadReader.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BeadReader";
+			};
+			name = Release;
+		};
+		2DA040CF2EFAE6F500E5C65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Apricity.BeadReaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeadReader;
+			};
+			name = Debug;
+		};
+		2DA040D02EFAE6F500E5C65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BeadReader/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Apricity.BeadReaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeadReader;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DA0409F2EFAE6EB00E5C65C /* Build configuration list for PBXProject "BeadReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DA040C62EFAE6F500E5C65C /* Debug */,
+				2DA040C72EFAE6F500E5C65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DA040C82EFAE6F500E5C65C /* Build configuration list for PBXNativeTarget "BeadReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DA040C92EFAE6F500E5C65C /* Debug */,
+				2DA040CA2EFAE6F500E5C65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DA040CB2EFAE6F500E5C65C /* Build configuration list for PBXNativeTarget "BeadReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DA040CC2EFAE6F500E5C65C /* Debug */,
+				2DA040CD2EFAE6F500E5C65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DA040CE2EFAE6F500E5C65C /* Build configuration list for PBXNativeTarget "BeadReaderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DA040CF2EFAE6F500E5C65C /* Debug */,
+				2DA040D02EFAE6F500E5C65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DA0409C2EFAE6EB00E5C65C /* Project object */;
+}

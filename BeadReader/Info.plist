@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App Identity -->
+    <key>CFBundleName</key>
+    <string>BeadReader</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>BeadReader</string>
+
+    <key>CFBundleIdentifier</key>
+    <string>Apricity.BeadReader</string>
+
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+
+    <!-- Document Type Registration -->
+    <key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeName</key>
+            <string>Bead Pattern</string>
+
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+
+            <key>LSHandlerRank</key>
+            <string>Owner</string>
+
+            <key>LSItemContentTypes</key>
+            <array>
+                <string>Apricity.BeadReader.pattern</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- Exported UTType for .xbp -->
+    <key>UTExportedTypeDeclarations</key>
+    <array>
+        <dict>
+            <key>UTTypeIdentifier</key>
+            <string>Apricity.BeadReader.pattern</string>
+
+            <key>UTTypeDescription</key>
+            <string>Bead Pattern File</string>
+
+            <key>UTTypeConformsTo</key>
+            <array>
+                <string>public.xml</string>
+            </array>
+
+            <key>UTTypeTagSpecification</key>
+            <dict>
+                <key>public.filename-extension</key>
+                <array>
+                    <string>xbp</string>
+                </array>
+
+                <key>public.mime-type</key>
+                <string>application/xml</string>
+            </dict>
+        </dict>
+    </array>
+
+</dict>
+</plist>
