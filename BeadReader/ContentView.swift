@@ -18,7 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         ContentViewBody()
-            .navigationTitle("")
+            .navigationTitle("BeadReader")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
 
@@ -213,7 +213,7 @@ struct SettingsView: View {
 
             Section("Playback") {
 
-                Toggle("Play by Bead", isOn: $settings.playByBead)
+//                Toggle("Play by Bead", isOn: $settings.playByBead)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Speed")
