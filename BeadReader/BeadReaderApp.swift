@@ -25,12 +25,12 @@ struct BeadReaderApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+//            NavigationStack {
                 ContentView()
                     .environmentObject(settings)
                     .environmentObject(patternViewModel)
                     .environmentObject(colorCatalog)
             }
-        }
+//        }
     }
 }

@@ -10,74 +10,78 @@ import UniformTypeIdentifiers
 
 struct ContentView: View {
     @EnvironmentObject var settings: SettingsModel
-
+    @EnvironmentObject var patternViewModel: PatternViewModel
+    
     @State private var showOpenSheet = false
     @State private var showAboutSheet = false
     @State private var showSettingsSheet = false
     @State private var showColorsSheet = false
-
+    
     var body: some View {
-        ContentViewBody()
-            .navigationTitle("BeadReader")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Menu {
-                        Button {
-                            showOpenSheet = true
+        NavigationStack {
+            ContentViewBody()
+                .navigationTitle(patternViewModel.pattern?.name ?? "BeadReader")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Menu {
+                            Button {
+                                showOpenSheet = true
+                            } label: {
+                                Label("Open", systemImage: "folder")
+                            }
+                            
+                            Button {
+                                showColorsSheet = true
+                            } label: {
+                                Label("Pattern Colors", systemImage: "paintpalette.fill")
+                            }
+                            
+                            Button {
+                                showSettingsSheet = true
+                            } label: {
+                                Label("Settings", systemImage: "gear")
+                            }
+                            
+                            Divider()
+                            
+                            Button {
+                                showAboutSheet = true
+                            } label: {
+                                Label("About", systemImage: "info.circle")
+                            }
                         } label: {
-                            Label("Open", systemImage: "folder")
+                            Image(systemName: "line.3.horizontal")
                         }
-
-                        Button {
-                            showColorsSheet = true
-                        } label: {
-                            Label("Pattern Colors", systemImage: "paintpalette.fill")
-                        }
-                        
-                        Button {
-                            showSettingsSheet = true
-                        } label: {
-                            Label("Settings", systemImage: "gear")
-                        }
-
-                        Divider()
-
-                        Button {
-                            showAboutSheet = true
-                        } label: {
-                            Label("About", systemImage: "info.circle")
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal")
                     }
                 }
+        }
+        .sheet(isPresented: $showOpenSheet) {
+            NavigationStack {
+                OpenView()
             }
-            .sheet(isPresented: $showOpenSheet) {
-                NavigationStack {
-                    OpenView()
-                }
+        }
+        .sheet(isPresented: $showColorsSheet) {
+            NavigationStack {
+                ColorsView()
             }
-            .sheet(isPresented: $showColorsSheet) {
-                NavigationStack {
-                    ColorsView()
-                }
+        }
+        .sheet(isPresented: $showSettingsSheet) {
+            NavigationStack {
+                SettingsView()
+                    .environmentObject(settings)
             }
-            .sheet(isPresented: $showSettingsSheet) {
-                NavigationStack {
-                    SettingsView()
-                        .environmentObject(settings)
-                }
+        }
+        .sheet(isPresented: $showAboutSheet) {
+            NavigationStack {
+                AboutView()
             }
-            .sheet(isPresented: $showAboutSheet) {
-                NavigationStack {
-                    AboutView()
-                }
-            }
+        }
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(Color(.systemBackground), for: .navigationBar)
     }
 }
-
 // MARK: - Main Content View
 struct ContentViewBody: View {
 
@@ -97,6 +101,8 @@ struct ContentViewBody: View {
 
     var body: some View {
         VStack(spacing: 2) {
+            // MARK: - Menu Section
+            
 
             // MARK: - Title Section
 //            Text("BeadReader")
@@ -106,9 +112,9 @@ struct ContentViewBody: View {
             
             HStack(spacing: 10) {
                 // MARK: - Pattern Name Section
-                Text(patternViewModel.pattern?.name ?? "No pattern selected")
-                    .font(.headline)
-                    .fontWeight(.bold)
+//                Text(patternViewModel.pattern?.name ?? "No pattern selected")
+//                    .font(.headline)
+//                    .fontWeight(.bold)
                 //                .padding(.top)
                 
                 // MARK: - Play / Pause Section
@@ -163,6 +169,7 @@ struct ContentViewBody: View {
                 }
             }
         }
+//        .ignoresSafeArea()
 //        .padding(.bottom)
         
         //MARK: - Default Pattern to display
@@ -195,7 +202,7 @@ struct ContentViewBody: View {
                 Bead(id: 20, colorName: "PURPLE", count: 1)
             ]
 
-            let pattern = Pattern(name: "Test Pattern", columns: 9, rows: 9, beads: beads)
+            let pattern = Pattern(name: "BeadReader", columns: 9, rows: 9, beads: beads)
             
             patternViewModel.loadIfEmpty(pattern)
         }
