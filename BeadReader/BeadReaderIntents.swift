@@ -50,20 +50,16 @@ struct BeadReaderShortcuts: AppShortcutsProvider {
             AppShortcut(
                 intent: BeadReaderPlayIntent(),
                 phrases: [
-                    "Bead Reader play",
-                    "Play bead reader",
-                    "Start bead reader"
-                ],
+                    "\(.applicationName) play",
+                    "Play \(.applicationName)"                ],
                 shortTitle: "Play",
                 systemImageName: "play.fill"
             ),
             AppShortcut(
                 intent: BeadReaderPauseIntent(),
                 phrases: [
-                    "Bead Reader pause",
-                    "Pause bead reader",
-                    "Stop bead reader"
-                ],
+                    "\(.applicationName) pause",
+                    "Pause \(.applicationName)"                ],
                 shortTitle: "Pause",
                 systemImageName: "pause.fill"
             )
