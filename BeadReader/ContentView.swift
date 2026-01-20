@@ -99,9 +99,9 @@ struct ContentViewBody: View {
         VStack(spacing: 2) {
 
             // MARK: - Title Section
-            Text("BeadReader")
-                .font(.title)
-                .fontWeight(.bold)
+//            Text("BeadReader")
+//                .font(.title)
+//                .fontWeight(.bold)
 //                .padding(.top)
             
             HStack(spacing: 10) {
@@ -163,7 +163,7 @@ struct ContentViewBody: View {
                 }
             }
         }
-        .padding(.bottom)
+//        .padding(.bottom)
         
         //MARK: - Default Pattern to display
         //Pattern to display when opened for first time
