@@ -167,6 +167,7 @@ struct ContentViewBody: View {
                         proxy.scrollTo(id, anchor: .center)
                     }
                 }
+                .frame(maxHeight: .infinity)
             }
         }
 //        .ignoresSafeArea()
