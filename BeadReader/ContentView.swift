@@ -11,141 +11,152 @@ import UniformTypeIdentifiers
 struct ContentView: View {
     @EnvironmentObject var settings: SettingsModel
     @EnvironmentObject var patternViewModel: PatternViewModel
+    @EnvironmentObject var colorCatalog: ColorCatalog
     
     @State private var showOpenSheet = false
     @State private var showAboutSheet = false
     @State private var showSettingsSheet = false
     @State private var showColorsSheet = false
+    @State private var didLoad = false
+    @State private var isPlaying = false
     
     var body: some View {
-        NavigationStack {
-            ContentViewBody()
-                .navigationTitle(patternViewModel.pattern?.name ?? "BeadReader")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Menu {
-                            Button {
-                                showOpenSheet = true
-                            } label: {
-                                Label("Open", systemImage: "folder")
-                            }
-                            
-                            Button {
-                                showColorsSheet = true
-                            } label: {
-                                Label("Pattern Colors", systemImage: "paintpalette.fill")
-                            }
-                            
-                            Button {
-                                showSettingsSheet = true
-                            } label: {
-                                Label("Settings", systemImage: "gear")
-                            }
-                            
-                            Divider()
-                            
-                            Button {
-                                showAboutSheet = true
-                            } label: {
-                                Label("About", systemImage: "info.circle")
-                            }
-                        } label: {
-                            Image(systemName: "line.3.horizontal")
-                        }
+        ZStack {
+            // Full screen background
+            Color(.systemBackground)
+                .ignoresSafeArea()
+            VStack(spacing: 0) {
+                // MARK: - Header / Menu
+                HStack {
+                    Menu {
+                        Button {
+                            showOpenSheet = true
+                        } label: { Label("Open", systemImage: "folder") }
+                        
+                        Button {
+                            showColorsSheet = true
+                        } label: { Label("Pattern Colors", systemImage: "paintpalette.fill") }
+                        
+                        Button {
+                            showSettingsSheet = true
+                        } label: { Label("Settings", systemImage: "gear") }
+                        
+                        Divider()
+                        
+                        Button {
+                            showAboutSheet = true
+                        } label: { Label("About", systemImage: "info.circle") }
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.title2)
+                            .padding(.leading)
                     }
+                    
+                    Spacer()
+                    
+                    Text(patternViewModel.pattern?.name ?? "BeadReader")
+                        .font(.headline)
+                        .padding(.trailing)
+                    
+                    Spacer()
                 }
-        }
-        .sheet(isPresented: $showOpenSheet) {
-            NavigationStack {
-                OpenView()
+                .padding(.vertical, 12)
+                .background(Color(.systemBackground))
+                
+                // MARK: - Pattern Grid (fills remaining space)
+                ZStack {
+                    PatternGridView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    PlaybackOverlay()
+                }
             }
+            .ignoresSafeArea()
+            .sheet(isPresented: $showOpenSheet) { NavigationStack { OpenView() } }
+            .sheet(isPresented: $showColorsSheet) { NavigationStack { ColorsView() } }
+            .sheet(isPresented: $showSettingsSheet) { NavigationStack { SettingsView().environmentObject(settings) } }
+            .sheet(isPresented: $showAboutSheet) { NavigationStack { AboutView() } }
+            .onAppear { loadDefaultPatternIfNeeded() }
         }
-        .sheet(isPresented: $showColorsSheet) {
-            NavigationStack {
-                ColorsView()
-            }
-        }
-        .sheet(isPresented: $showSettingsSheet) {
-            NavigationStack {
-                SettingsView()
-                    .environmentObject(settings)
-            }
-        }
-        .sheet(isPresented: $showAboutSheet) {
-            NavigationStack {
-                AboutView()
-            }
-        }
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarBackground(Color(.systemBackground), for: .navigationBar)
+    }
+
+    private func loadDefaultPatternIfNeeded() {
+        guard !didLoad else { return }
+        didLoad = true
+
+        let beads = [
+            Bead(id: 0, colorName: "PURPLE", count: 1),
+            Bead(id: 1, colorName: "AQUA", count: 9),
+            Bead(id: 2, colorName: "PURPLE", count: 1),
+            Bead(id: 3, colorName: "AQUA", count: 9),
+            Bead(id: 4, colorName: "PURPLE", count: 1),
+            Bead(id: 5, colorName: "AQUA", count: 9),
+            Bead(id: 6, colorName: "PURPLE", count: 1),
+            Bead(id: 7, colorName: "AQUA", count: 1),
+            Bead(id: 8, colorName: "PURPLE", count: 1),
+            Bead(id: 9, colorName: "AQUA", count: 7),
+            Bead(id: 10, colorName: "PURPLE", count: 1),
+            Bead(id: 11, colorName: "AQUA", count: 7),
+            Bead(id: 12, colorName: "PURPLE", count: 1),
+            Bead(id: 13, colorName: "AQUA", count: 1),
+            Bead(id: 14, colorName: "PURPLE", count: 1),
+            Bead(id: 15, colorName: "AQUA", count: 9),
+            Bead(id: 16, colorName: "PURPLE", count: 1),
+            Bead(id: 17, colorName: "AQUA", count: 9),
+            Bead(id: 18, colorName: "PURPLE", count: 1),
+            Bead(id: 19, colorName: "AQUA", count: 9),
+            Bead(id: 20, colorName: "PURPLE", count: 1)
+        ]
+
+        let pattern = Pattern(name: "BeadReader", columns: 9, rows: 9, beads: beads)
+        patternViewModel.loadIfEmpty(pattern)
     }
 }
-// MARK: - Main Content View
-struct ContentViewBody: View {
 
-    @State private var isPlaying = false
-    @State private var didLoad = false
-    @EnvironmentObject private var settings: SettingsModel
+// MARK: - Header View
+struct HeaderView: View {
     @EnvironmentObject var patternViewModel: PatternViewModel
-    @EnvironmentObject var colorCatalog: ColorCatalog
-    
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Button {
+                patternViewModel.togglePlayPause()
+            } label: {
+                Image(systemName: patternViewModel.isPlaying ? "pause.fill" : "play.fill")
+                    .font(.system(size: 24))
+            }
+
+            Text("# \(patternViewModel.currentBeadIndex)")
+                .font(.body)
+
+            Button {
+                patternViewModel.resetPlayback()
+            } label: {
+                Image(systemName: "arrow.counterclockwise")
+                    .font(.system(size: 22))
+            }
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+    }
+}
+
+// MARK: - PatternGridView Section
+struct PatternGridView: View {
+    @EnvironmentObject var patternViewModel: PatternViewModel
+
     private var gridColumns: [GridItem] {
         Array(
             repeating: GridItem(.flexible(), spacing: 4),
             count: max(patternViewModel.columns, 1)
         )
     }
-
-
+    
     var body: some View {
-        VStack(spacing: 2) {
-            // MARK: - Menu Section
-            
-
-            // MARK: - Title Section
-//            Text("BeadReader")
-//                .font(.title)
-//                .fontWeight(.bold)
-//                .padding(.top)
-            
-            HStack(spacing: 10) {
-                // MARK: - Pattern Name Section
-//                Text(patternViewModel.pattern?.name ?? "No pattern selected")
-//                    .font(.headline)
-//                    .fontWeight(.bold)
-                //                .padding(.top)
-                
-                // MARK: - Play / Pause Section
-                Button(action: {
-                    patternViewModel.togglePlayPause()
-                }) {
-                    Image(systemName: patternViewModel.isPlaying ? "pause.fill" : "play.fill")
-                        .font(.system(size: 28))
-                        .padding()
-                }
-                .accessibilityLabel(isPlaying ? "Pause pattern" : "Play pattern")
-                
-                // MARK: - Bead Number Section
-                Text("# \(patternViewModel.currentBeadIndex)")
-                    .font(.body)
-                
-                
-                // MARK: - Reset Section
-                Button(action: {
-                    patternViewModel.resetPlayback()
-                }) {
-                    Image(systemName: "arrow.counterclockwise")
-                        .font(.system(size: 28))
-                        .padding()
-                }
-                .accessibilityLabel("Reset pattern")
-            }
-            // MARK: - Pattern Grid Section
-            ScrollViewReader { proxy in
-                ScrollView {
-                    LazyVGrid(columns: gridColumns, spacing: 4) {
+        ScrollViewReader { proxy in
+            ScrollView {
+                LazyVGrid(
+                    columns: gridColumns,spacing: 4) {
                         ForEach(patternViewModel.gridCells) { cell in
                             BeadCellView(
                                 cell: cell,
@@ -159,52 +170,49 @@ struct ContentViewBody: View {
                             }
                         }
                     }
-                    .padding(.horizontal)
-                }
-                .onChange(of: patternViewModel.currentCellID) { id in
-                    guard let id else { return }
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        proxy.scrollTo(id, anchor: .center)
-                    }
+            }
+            .onChange(of: patternViewModel.currentCellID) { id in
+                guard let id else { return }
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    proxy.scrollTo(id, anchor: .center)
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-//        .ignoresSafeArea()
-//        .padding(.bottom)
-        
-        //MARK: - Default Pattern to display
-        //Pattern to display when opened for first time
-        .onAppear {
-            guard !didLoad else { return }
-            didLoad = true
+    }
+}
 
-            let beads = [
-                Bead(id: 0, colorName: "PURPLE", count: 1),
-                Bead(id: 1, colorName: "AQUA", count: 9),
-                Bead(id: 2, colorName: "PURPLE", count: 1),
-                Bead(id: 3, colorName: "AQUA", count: 9),
-                Bead(id: 4, colorName: "PURPLE", count: 1),
-                Bead(id: 5, colorName: "AQUA", count: 9),
-                Bead(id: 6, colorName: "PURPLE", count: 1),
-                Bead(id: 7, colorName: "AQUA", count: 1),
-                Bead(id: 8, colorName: "PURPLE", count: 1),
-                Bead(id: 9, colorName: "AQUA", count: 7),
-                Bead(id: 10, colorName: "PURPLE", count: 1),
-                Bead(id: 11, colorName: "AQUA", count: 7),
-                Bead(id: 12, colorName: "PURPLE", count: 1),
-                Bead(id: 13, colorName: "AQUA", count: 1),
-                Bead(id: 14, colorName: "PURPLE", count: 1),
-                Bead(id: 15, colorName: "AQUA", count: 9),
-                Bead(id: 16, colorName: "PURPLE", count: 1),
-                Bead(id: 17, colorName: "AQUA", count: 9),
-                Bead(id: 18, colorName: "PURPLE", count: 1),
-                Bead(id: 19, colorName: "AQUA", count: 9),
-                Bead(id: 20, colorName: "PURPLE", count: 1)
-            ]
+// MARK: - Play Controls Overlay
+struct PlaybackOverlay: View {
+    @EnvironmentObject var patternViewModel: PatternViewModel
 
-            let pattern = Pattern(name: "BeadReader", columns: 9, rows: 9, beads: beads)
-            
-            patternViewModel.loadIfEmpty(pattern)
+    var body: some View {
+        VStack {
+            Spacer()
+
+            HStack(spacing: 24) {
+                Button {
+                    patternViewModel.togglePlayPause()
+                } label: {
+                    Image(systemName: patternViewModel.isPlaying ? "pause.fill" : "play.fill")
+                        .font(.system(size: 28))
+                }
+
+                Text("# \(patternViewModel.currentBeadIndex)")
+                    .font(.body)
+                
+                Button {
+                    patternViewModel.resetPlayback()
+                } label: {
+                    Image(systemName: "arrow.counterclockwise")
+                        .font(.system(size: 24))
+                }
+            }
+            .padding()
+            .background(.ultraThinMaterial)
+            .clipShape(Capsule())
+            .shadow(radius: 8)
+            .padding(.bottom, 24)
         }
     }
 }
