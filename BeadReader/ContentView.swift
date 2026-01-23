@@ -147,7 +147,7 @@ struct PatternGridView: View {
 
     private var gridColumns: [GridItem] {
         Array(
-            repeating: GridItem(.flexible(), spacing: 4),
+            repeating: GridItem(.flexible(), spacing: 2),
             count: max(patternViewModel.columns, 1)
         )
     }
@@ -156,7 +156,7 @@ struct PatternGridView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 LazyVGrid(
-                    columns: gridColumns,spacing: 4) {
+                    columns: gridColumns,spacing: 1) {
                         ForEach(patternViewModel.gridCells) { cell in
                             BeadCellView(
                                 cell: cell,
