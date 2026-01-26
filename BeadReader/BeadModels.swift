@@ -298,13 +298,15 @@ final class PatternViewModel: ObservableObject {
         // Set the current bead
         currentBeadIndex = bead.id
         
-        // Mark all beads up to and including the selected one as read
-        for i in 0...currentBeadIndex {
-            beads[i].isRead = true
+        // Mark all beads up to but not including the selected one as read
+        if currentBeadIndex > 0 {
+            for i in 0...(currentBeadIndex - 1) {
+                beads[i].isRead = true
+            }
         }
 
-        // Mark beads AFTER as unread
-        for i in (currentBeadIndex + 1)..<beads.count {
+        // Mark beads including and after as unread
+        for i in (currentBeadIndex)..<beads.count {
             beads[i].isRead = false
         }
     }
