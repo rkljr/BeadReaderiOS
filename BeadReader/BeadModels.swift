@@ -86,7 +86,11 @@ final class PatternViewModel: ObservableObject {
     
     // Playback
     @Published var currentBeadIndex: Int = 0
-    @Published var isPlaying: Bool = false
+    @Published var isPlaying: Bool = false {
+        didSet {
+                UIApplication.shared.isIdleTimerDisabled = isPlaying
+            }
+    }
     
     let settingsModel: SettingsModel
     
@@ -310,5 +314,4 @@ final class PatternViewModel: ObservableObject {
             beads[i].isRead = false
         }
     }
-    
 }
