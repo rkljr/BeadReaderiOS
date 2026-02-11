@@ -89,8 +89,8 @@ final class PatternViewModel: ObservableObject {
     @Published var timeRemaining: String = ""
     @Published var isPlaying: Bool = false {
         didSet {
-                UIApplication.shared.isIdleTimerDisabled = isPlaying
-            }
+            UIApplication.shared.isIdleTimerDisabled = isPlaying
+        }
     }
     
     let settingsModel: SettingsModel
