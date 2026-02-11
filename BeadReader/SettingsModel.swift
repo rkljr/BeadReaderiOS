@@ -14,9 +14,9 @@ final class SettingsModel: ObservableObject {
     @AppStorage("speed") var speed: Double = 1.5
     
     static let preview: SettingsModel = {
-            let settings = SettingsModel()
-            settings.playByBead = false
+        let settings = SettingsModel()
+        settings.playByBead = false
         settings.speed = 1.5
-            return settings
+        return settings
     }()
 }

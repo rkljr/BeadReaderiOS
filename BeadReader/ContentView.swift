@@ -201,6 +201,9 @@ struct PlaybackOverlay: View {
                 Text("# \(patternViewModel.currentBeadIndex)")
                     .font(.body)
                 
+                Text("\(patternViewModel.timeRemaining)")
+                    .font(.body)
+                
                 Button {
                     patternViewModel.resetPlayback()
                 } label: {

@@ -86,6 +86,7 @@ final class PatternViewModel: ObservableObject {
     
     // Playback
     @Published var currentBeadIndex: Int = 0
+    @Published var timeRemaining: String = ""
     @Published var isPlaying: Bool = false {
         didSet {
                 UIApplication.shared.isIdleTimerDisabled = isPlaying
@@ -263,6 +264,7 @@ final class PatternViewModel: ObservableObject {
 
             bead.isRead = true
             currentBeadIndex += 1
+            timeRemaining = getTimeRemaining(from: currentBeadIndex, in: beads)
         }
     }
 
@@ -313,5 +315,40 @@ final class PatternViewModel: ObservableObject {
         for i in (currentBeadIndex)..<beads.count {
             beads[i].isRead = false
         }
+    }
+    
+    //MARK: - time remaining section
+    func sumCounts(from currentBeadIndex: Int, in beads: [Bead]) -> Int {
+        guard currentBeadIndex >= 0 && currentBeadIndex < beads.count else {
+            return 0
+        }
+
+        var total = 0
+        for bead in beads[currentBeadIndex...] {
+            total += bead.count
+        }
+        return total
+    }
+    
+    func secondsRemaining(from beadCount: Int) -> Int {
+        let delay = settingsModel.speed
+        let totalSeconds = Double(beadCount) * delay
+        
+        return Int(totalSeconds)
+    }
+    
+    func formatHoursMinutes(from totalSeconds: Int) -> String {
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        
+        return String(format: "%d:%02d", hours, minutes)
+    }
+
+    func getTimeRemaining(from currentBeadIndex: Int, in beads: [Bead]) -> String {
+        let beadCount = sumCounts(from: currentBeadIndex, in: beads)
+        let seconds = secondsRemaining(from: beadCount) + Int(Double((beads.count - currentBeadIndex)) * 1.7)
+        let remainString = formatHoursMinutes(from: seconds)
+        
+        return remainString
     }
 }
