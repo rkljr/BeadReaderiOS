@@ -330,9 +330,15 @@ final class PatternViewModel: ObservableObject {
         return total
     }
     
-    func secondsRemaining(from beadCount: Int) -> Int {
+    func secondsRemaining(from currentBeadIndex: Int, in beads: [Bead]) -> Int {
+        let totalBeads = sumCounts(from: currentBeadIndex, in: beads)
+        
         let delay = settingsModel.speed
-        let totalSeconds = Double(beadCount) * delay
+        var totalSeconds = Double(totalBeads) * delay
+        
+        //Get the number of color & count combinations remaining to be played
+        totalSeconds += Double((beads.count - currentBeadIndex)) * 1.8
+        print(totalSeconds)
         
         return Int(totalSeconds)
     }
@@ -345,8 +351,7 @@ final class PatternViewModel: ObservableObject {
     }
 
     func getTimeRemaining(from currentBeadIndex: Int, in beads: [Bead]) -> String {
-        let beadCount = sumCounts(from: currentBeadIndex, in: beads)
-        let seconds = secondsRemaining(from: beadCount) + Int(Double((beads.count - currentBeadIndex)) * 1.7)
+        let seconds = secondsRemaining(from: currentBeadIndex, in: beads)
         let remainString = formatHoursMinutes(from: seconds)
         
         return remainString
