@@ -190,7 +190,7 @@ struct PlaybackOverlay: View {
         VStack {
             Spacer()
 
-            HStack(spacing: 24) {
+            HStack(spacing: 20) {
                 Button {
                     patternViewModel.togglePlayPause()
                 } label: {
@@ -201,8 +201,11 @@ struct PlaybackOverlay: View {
                 Text("# \(patternViewModel.currentBeadIndex)")
                     .font(.body)
                 
-                Text("\(patternViewModel.timeRemaining)")
-                    .font(.body)
+                HStack(spacing: 3) {
+                    Image(systemName: "hourglass")
+                    Text("\(patternViewModel.timeRemaining)")
+                        .font(.body)
+                }
                 
                 Button {
                     patternViewModel.resetPlayback()
