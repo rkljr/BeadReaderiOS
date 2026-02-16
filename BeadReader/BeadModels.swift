@@ -148,6 +148,9 @@ final class PatternViewModel: ObservableObject {
         self.columns = pattern.columns
         self.beads = pattern.beads
         buildGrid()
+        
+        //Calculate the time remaining
+        timeRemaining = getTimeRemaining(from: 0, in: self.beads)
     }
 
     func loadIfEmpty(_ pattern: Pattern) {
