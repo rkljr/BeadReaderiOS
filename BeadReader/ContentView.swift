@@ -385,7 +385,7 @@ struct AboutView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
-                Text("This app helps you read and follow bead crochet patterns, tracking progress and playback settings.")
+                Text("This app helps you string bead patterns for bead crochet projects quickly and easily.")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
