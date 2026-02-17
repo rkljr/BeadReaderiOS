@@ -71,13 +71,12 @@ struct ContentView: View {
                     PlaybackOverlay()
                 }
             }
-            .ignoresSafeArea()
-            .sheet(isPresented: $showOpenSheet) { NavigationStack { OpenView() } }
-            .sheet(isPresented: $showColorsSheet) { NavigationStack { ColorsView() } }
-            .sheet(isPresented: $showSettingsSheet) { NavigationStack { SettingsView().environmentObject(settings) } }
-            .sheet(isPresented: $showAboutSheet) { NavigationStack { AboutView() } }
-            .onAppear { loadDefaultPatternIfNeeded() }
         }
+        .sheet(isPresented: $showOpenSheet) { NavigationStack { OpenView() } }
+        .sheet(isPresented: $showColorsSheet) { NavigationStack { ColorsView() } }
+        .sheet(isPresented: $showSettingsSheet) { NavigationStack { SettingsView().environmentObject(settings) } }
+        .sheet(isPresented: $showAboutSheet) { NavigationStack { AboutView() } }
+        .onAppear { loadDefaultPatternIfNeeded() }
     }
 
     private func loadDefaultPatternIfNeeded() {
@@ -376,28 +375,35 @@ struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        VStack(spacing: 16) {
-            Text("BeadReader")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-
-            Text("Version 1.0")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
-            Text("This app helps you read and follow bead crochet patterns, tracking progress and playback settings.")
-                .multilineTextAlignment(.center)
-                .padding()
-            
-            Text("BeadReader does not collect, store, or share any personal information or usage data. The app does not track users, use analytics, or connect to external servers. Because no data is collected, BeadReader is safe for users of all ages.")
-                .font(.body)
-
+        ScrollView {
+            VStack(spacing: 5) {
+                Text("BeadReader")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Text("Version 1.0")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                Text("This app helps you read and follow bead crochet patterns, tracking progress and playback settings.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding()
+                
+                Text("BeadReader does not collect, store, or share any personal information or usage data. The app does not track users, use analytics, or connect to external servers. Because no data is collected, BeadReader is safe for users of all ages.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding()
+                
                 Link("Read the full privacy policy", destination: URL(string: "https://github.com/rkljr/beadreader/blob/main/beadreader-privacy-policy.html")!)
                     .font(.body)
                     .foregroundColor(.blue)
-
-            Spacer()
+            }
+            .frame(maxWidth: .infinity)
         }
+        //.scrollIndicators(.visible)
         .padding()
         .navigationTitle("About")
         .navigationBarTitleDisplayMode(.inline)
