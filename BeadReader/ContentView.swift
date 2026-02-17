@@ -397,7 +397,7 @@ struct AboutView: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
                 
-                Link("Read the full privacy policy", destination: URL(string: "https://github.com/rkljr/beadreader/blob/main/beadreader-privacy-policy.html")!)
+                Link("Read the full privacy policy", destination: URL(string: "https://rkljr.github.io/privacy-policy.html")!)
                     .font(.body)
                     .foregroundColor(.blue)
             }
