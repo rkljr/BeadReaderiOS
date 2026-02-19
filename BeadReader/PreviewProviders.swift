@@ -43,11 +43,11 @@ struct AboutView_Previews: PreviewProvider {
     }
 }
 
-struct OpenView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            OpenView()
-        }
-    }
-}
+//struct OpenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            OpenView()
+//        }
+//    }
+//}
 

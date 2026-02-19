@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import PhotosUI
 
 struct ContentView: View {
     @EnvironmentObject var settings: SettingsModel
@@ -14,11 +15,13 @@ struct ContentView: View {
     @EnvironmentObject var colorCatalog: ColorCatalog
     
     @State private var showOpenSheet = false
+    @State private var showOpenFilesSheet = false
     @State private var showAboutSheet = false
     @State private var showSettingsSheet = false
     @State private var showColorsSheet = false
     @State private var didLoad = false
     @State private var isPlaying = false
+    @State private var selectedFileURL: URL?
     
     var body: some View {
         ZStack {
@@ -31,7 +34,11 @@ struct ContentView: View {
                     Menu {
                         Button {
                             showOpenSheet = true
-                        } label: { Label("Open", systemImage: "folder") }
+                        } label: { Label("Open Photo", systemImage: "photo") }
+                        
+                        Button {
+                            showOpenFilesSheet = true
+                        } label: { Label("Open File", systemImage: "folder") }
                         
                         Button {
                             showColorsSheet = true
@@ -72,7 +79,16 @@ struct ContentView: View {
                 }
             }
         }
-        .sheet(isPresented: $showOpenSheet) { NavigationStack { OpenView() } }
+        .sheet(isPresented: $showOpenSheet) { PhotoPickerSheet(selectedFileURL: $selectedFileURL) }
+//        .onChange(of: selectedPhotoURL) { newURL in
+//            guard let url = newURL else { return }
+//            loadPattern(from: url)
+//        }
+        .sheet(isPresented: $showOpenFilesSheet) { DocumentPickerView(selectedFileURL: $selectedFileURL) }
+        .onChange(of: selectedFileURL) { newURL in
+            guard let url = newURL else { return }
+            loadPattern(from: url)
+        }
         .sheet(isPresented: $showColorsSheet) { NavigationStack { ColorsView() } }
         .sheet(isPresented: $showSettingsSheet) { NavigationStack { SettingsView().environmentObject(settings) } }
         .sheet(isPresented: $showAboutSheet) { NavigationStack { AboutView() } }
@@ -109,6 +125,16 @@ struct ContentView: View {
 
         let pattern = Pattern(name: "BeadReader", columns: 9, rows: 9, beads: beads)
         patternViewModel.loadIfEmpty(pattern)
+    }
+    
+    private func loadPattern(from url: URL) {
+        PatternLoader().loadPNGPattern(from: url) { pattern in
+            guard let pattern = pattern else { return }
+            DispatchQueue.main.async {
+                // Update the patternViewModel
+                patternViewModel.loadPattern(pattern)
+            }
+        }
     }
 }
 
@@ -269,66 +295,47 @@ struct SettingsView: View {
 
 
 // MARK: - Open View
-struct OpenView: View {
-
-    @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var patternViewModel: PatternViewModel
-    
-    @State private var showingDocumentPicker = false
-    @State private var selectedFileURL: URL?
-
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Open a Bead Pattern")
-                .font(.title2)
-                .fontWeight(.bold)
-
-            if let url = selectedFileURL {
-                Text("Selected file: \(url.lastPathComponent)")
-                    .multilineTextAlignment(.center)
-            } else {
-                Text("No file selected")
-                    .foregroundColor(.secondary)
-            }
-
-            Button("Choose File") {
-                showingDocumentPicker = true
-            }
-
-            Spacer()
-        }
-        .padding()
-        .navigationTitle("Open")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Done") {
-                    dismiss()
-                }
-            }
-        }
-        .sheet(isPresented: $showingDocumentPicker) {
-            DocumentPickerView(selectedFileURL: $selectedFileURL)
-        }
-        // 🔹 Trigger pattern loading when a file is selected
-        .onChange(of: selectedFileURL) { newURL in
-            guard let url = newURL else { return }
-            loadPattern(from: url)
-        }
-    }
-    
-    private func loadPattern(from url: URL) {
-        PatternLoader().loadPattern(from: url) { pattern in
-            guard let pattern = pattern else { return }
-            DispatchQueue.main.async {
-                // Update the PatternViewModel so LazyVGrid refreshes
-                patternViewModel.loadPattern(pattern)
-                // Close the OpenView
-                dismiss()
-            }
-        }
-    }
-}
+//struct OpenView: View {
+//
+//    @Environment(\.dismiss) private var dismiss
+//    @EnvironmentObject var patternViewModel: PatternViewModel
+//
+//    @State private var showingPhotoPicker = false
+//    @State private var selectedFileURL: URL?
+//
+//    var body: some View {
+//        // Minimal placeholder while the picker is open
+//        Color.clear
+//            .onAppear {
+//                // Immediately present the PhotoPicker when the view appears
+//                showingPhotoPicker = true
+//            }
+//            .sheet(isPresented: $showingPhotoPicker) {
+//                PhotoPickerSheet(selectedFileURL: $selectedFileURL)
+//            }
+//            .onChange(of: selectedFileURL) { newURL in
+//                guard let url = newURL else {
+//                    // User cancelled, just dismiss OpenView
+//                    dismiss()
+//                    return
+//                }
+//
+//                loadPattern(from: url)
+//            }
+//    }
+//
+//    private func loadPattern(from url: URL) {
+//        PatternLoader().loadPattern(from: url) { pattern in
+//            guard let pattern = pattern else { return }
+//            DispatchQueue.main.async {
+//                // Update the patternViewModel
+//                patternViewModel.loadPattern(pattern)
+//                // Close OpenView
+//                dismiss()
+//            }
+//        }
+//    }
+//}
 
 // MARK: - Document Picker
 struct DocumentPickerView: UIViewControllerRepresentable {
@@ -341,7 +348,8 @@ struct DocumentPickerView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
         let picker = UIDocumentPickerViewController(
-            forOpeningContentTypes: [.beadPattern], // Only allow xbp files
+            //forOpeningContentTypes: [.beadPattern], // Only allow xbp files
+            forOpeningContentTypes: [.png], // Only allow xbp files
             asCopy: true
         )
         picker.delegate = context.coordinator
@@ -368,6 +376,73 @@ struct DocumentPickerView: UIViewControllerRepresentable {
         }
     }
 }
+
+// MARK: - Photo Picker View
+struct PhotoPickerSheet: UIViewControllerRepresentable {
+
+    @Binding var selectedFileURL: URL?
+    @Environment(\.dismiss) private var dismissSheet
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: Context) -> PHPickerViewController {
+        var config = PHPickerConfiguration(photoLibrary: .shared())
+        config.filter = .images
+        config.selectionLimit = 1
+
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
+
+    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+        var parent: PhotoPickerSheet
+
+        init(_ parent: PhotoPickerSheet) {
+            self.parent = parent
+        }
+
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            // Always dismiss the picker sheet, whether selection or cancel
+            parent.dismissSheet()
+
+            guard let itemProvider = results.first?.itemProvider else {
+                // User cancelled, no file selected
+                return
+            }
+
+            let typeId = UTType.image.identifier
+
+            itemProvider.loadFileRepresentation(forTypeIdentifier: typeId) { url, error in
+                if let error = error {
+                    print("PhotoPicker error: \(error)")
+                    return
+                }
+                guard let url = url else { return }
+
+                // Copy to temp folder
+                let tempURL = FileManager.default.temporaryDirectory
+                    .appendingPathComponent(UUID().uuidString)
+                    .appendingPathExtension(url.pathExtension)
+
+                do {
+                    try FileManager.default.copyItem(at: url, to: tempURL)
+                    DispatchQueue.main.async {
+                        self.parent.selectedFileURL = tempURL
+                    }
+                } catch {
+                    print("Failed to copy photo to temp file: \(error)")
+                }
+            }
+        }
+    }
+}
+
+
 
 // MARK: - About View
 struct AboutView: View {
