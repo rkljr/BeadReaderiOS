@@ -61,7 +61,7 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    Text(patternViewModel.pattern?.name ?? "BeadReader")
+                    Text(patternViewModel.pattern?.name ?? "BeadReader™")
                         .font(.headline)
                         .padding(.trailing)
                     
@@ -123,7 +123,7 @@ struct ContentView: View {
             Bead(id: 20, colorName: "PURPLE", count: 1)
         ]
 
-        let pattern = Pattern(name: "BeadReader", columns: 9, rows: 9, beads: beads)
+        let pattern = Pattern(name: "BeadReader™", columns: 9, rows: 9, beads: beads)
         patternViewModel.loadIfEmpty(pattern)
     }
     

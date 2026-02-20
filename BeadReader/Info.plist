@@ -22,6 +22,9 @@
     <key>CFBundleShortVersionString</key>
     <string>1.0</string>
 
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    
     <!-- Document Type Registration -->
     <key>CFBundleDocumentTypes</key>
     <array>
@@ -69,6 +72,5 @@
             </dict>
         </dict>
     </array>
-
 </dict>
 </plist>

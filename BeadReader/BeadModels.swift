@@ -341,7 +341,7 @@ final class PatternViewModel: ObservableObject {
         
         //Get the number of color & count combinations remaining to be played
         totalSeconds += Double((beads.count - currentBeadIndex)) * 1.8
-        print(totalSeconds)
+//        print(totalSeconds)
         
         return Int(totalSeconds)
     }
